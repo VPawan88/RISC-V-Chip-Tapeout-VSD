@@ -1,20 +1,34 @@
-# 🚀 Day 1 – RTL Design, Simulation, Testbench & Synthesis
+Day 1 – Verilog RTL Design & Synthesis
 
-This repository documents my learnings and tasks from Day 1 of the India RISC-V Tapeout Program.
+This document records my learnings and tasks from Day 1 of the India RISC-V SoC Tapeout Program.
 
----
+Objectives
+• Gain a clear understanding of Verilog RTL design and the front-end digital flow
+• Explore open-source simulation using Icarus Verilog (iverilog) and waveform analysis in GTKWave
+• Learn logic synthesis using Yosys with Sky130 PDKs
+• Practice the complete flow: code → simulate → synthesize → analyze
 
-## 🎯 Objectives
-- Understand the basics of RTL design and its role in the front-end flow.
-- Learn how to write and run testbenches to verify functionality.
-- Perform simulation using Icarus Verilog and visualize results in GTKWave.
-- Carry out synthesis using Yosys and analyze the netlist.
+Tasks Done
+Studied RTL design principles and the synthesis process
+Installed and verified Icarus Verilog, GTKWave, and Yosys tools
 
----
+Ran sample labs:
 
-## 📝 Tasks Done
-1. Wrote a simple Verilog RTL design (good_mux).  
-2. Created a corresponding testbench to apply inputs and check outputs.  
-3. Simulated the design using iverilog and viewed waveforms in gtkwave.  
-4. Ran synthesis in Yosys to generate the netlist.  
-5. Compared RTL simulation results with synthesized netlist simulation.
+Compiled and simulated Verilog design/testbench using:
+iverilog design.v testbench.v
+./a.out
+gtkwave dump.vcd
+
+Performed logic synthesis in Yosys with commands:
+yosys
+read_liberty <library>
+read_verilog design.v
+abc -liberty <library>
+show
+
+Generated a technology-mapped netlist using Sky130 PDK and verified functionality
+
+Key Takeaways
+• Complete flow from RTL coding to gate-level netlist using only open-source tools
+• Hands-on experience with iverilog simulation and GTKWave waveform visualization
+• Understanding of how Yosys performs logic synthesis and mapping to Sky130 cells
