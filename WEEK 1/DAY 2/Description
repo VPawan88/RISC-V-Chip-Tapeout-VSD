@@ -1,1 +1,29 @@
-ad
+Day 2 – Timing Libraries, Synthesis Styles & Flop Coding
+
+focused on understanding timing libraries, synthesis approaches, and efficient flip-flop (flop) coding styles.
+
+Key Topics Learned
+
+Timing Libraries (.lib)
+• Introduced the role of Liberty (.lib) files in synthesis.
+• These contain detailed timing, power, and functional models for each standard cell, enabling accurate timing analysis.
+• Example: sky130_fd_sc_hd__tt_025C_1v80.lib describes cell functions, propagation delays, setup/hold times, and power data for the SkyWater 130 nm process at typical corner (tt), 25 °C, and 1.8 V.
+
+Hierarchical vs Flat Synthesis
+• Hierarchical synthesis preserves module boundaries, making debugging and reuse easier and enabling faster incremental builds.
+• Flat synthesis flattens all modules into one netlist, allowing global optimization but increasing compile time and complexity.
+• Trade-off: Hierarchical is better for large reusable IPs, while flat is suited for maximum optimization in smaller designs.
+
+Efficient Flop Coding Styles and Optimization
+• Learned why flops are essential for sequential logic and timing closure.
+• Explored Verilog coding styles such as:
+– Asynchronous reset
+– Synchronous reset
+• Practiced writing and synthesizing these styles using Yosys with the Sky130 PDK.
+
+Practical Labs
+• Wrote Verilog flop RTL and corresponding testbenches.
+• Simulated with Icarus Verilog and viewed waveforms using GTKWave.
+• Ran synthesis in Yosys with the sky130_fd_sc_hd__tt_025C_1v80.lib timing library.
+• Compared hierarchical versus flat synthesis netlists and timing.
+
