@@ -110,6 +110,7 @@ When sel = 1 → y = i1
 ```
 
 4. **Synthesis using Yosys**
+
 🛠️ What is Synthesis?
 
 Synthesis is the process of converting your high-level Verilog code (RTL) into a gate-level netlist, which is a structural description of your circuit using basic logic gates. The output of this process is a new Verilog file that represents the synthesized circuit.
