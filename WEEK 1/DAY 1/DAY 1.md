@@ -160,6 +160,8 @@ show
 ```
 <img width="1075" height="647" alt="Screenshot 2025-09-24 051736" src="https://github.com/user-attachments/assets/97c10862-8ff2-4222-9b3e-3baf0cf0426e" />
 
+
+
 4. **sky130_fd_sc_hd__tt_025C_1v80.lib**
 
 🌐 Sky130 Library File: sky130_fd_sc_hd__tt_025C_1v80.lib
