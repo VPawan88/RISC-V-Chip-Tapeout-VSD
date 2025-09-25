@@ -106,7 +106,7 @@ write_verilog -noattr multiple_modules_heir.v
 ```
 
 ### `multiple_module_heir.v`
-``` 
+```verilog 
 module multiple_modules(a, b, c, y);
     input a;
     input b;
@@ -184,7 +184,7 @@ show multiple_modules
 
 
 ### `multiple_modules_flat.v`
-```
+```verilog
 module multiple_modules(a, b, c, y);
     input a;
     input b;
