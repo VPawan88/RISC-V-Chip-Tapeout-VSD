@@ -96,8 +96,9 @@ read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog multiple_modules.v
 synth -top multiple_modules
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show multiple_modules
 ```
-
+<img width="600" height="129" alt="Screenshot 2025-09-25 054044" src="https://github.com/user-attachments/assets/75469d2a-73c3-49a6-b713-d077e46679ff" />
 
 ```
 write_verilog -noattr multiple_modules_heir.v
@@ -165,10 +166,6 @@ module sub_module2(a, b, y);
 endmodule
 ```
 
-```
-show multiple_modules
-```
-<img width="600" height="129" alt="Screenshot 2025-09-25 054044" src="https://github.com/user-attachments/assets/75469d2a-73c3-49a6-b713-d077e46679ff" />
 
 
 ## 2 Flat Synthesis
@@ -180,7 +177,11 @@ Flattening removes module boundaries so the tool directly optimizes all logic at
 flatten
 write_verilog -noattr multiple_modules_flat.v
 !gvim multiple_modules_flat.v
+show multiple_modules
 ```
+<img width="1106" height="150" alt="Screenshot 2025-09-25 061224" src="https://github.com/user-attachments/assets/a5577fb8-f12b-49ab-90ba-b1deeb12b296" />
+
+
 
 ### `multiple_modules_flat.v`
 ```
@@ -222,13 +223,11 @@ module multiple_modules(a, b, c, y);
     assign net1 = \u1.y;
 endmodule
 ```
-```
-show multiple_modules
-```
-<img width="1106" height="150" alt="Screenshot 2025-09-25 061224" src="https://github.com/user-attachments/assets/a5577fb8-f12b-49ab-90ba-b1deeb12b296" />
 
 
 ## Sub module sysnthesis
+
+You can synthesize a single submodule independently for reuse or analysis.
 
 🛠️ Yosys Commands
 ```
