@@ -334,6 +334,20 @@ gtkwave tb_dff_asyncres.vcd
 
 # SYNTHESIS
 
+🛠️ Yosys Commands
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog dff_asyncres.v
+synth -top dff_asyncres
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+
+<img width="1057" height="160" alt="Screenshot 2025-09-26 060508" src="https://github.com/user-attachments/assets/641b60e7-d1b0-40ac-91d7-0160a9bce147" />
+
+
 
 
 ## 2 "D-Flip FLop with Asyncronous set"
@@ -396,7 +410,19 @@ gtkwave tb_dff_async_set.vcd
 
 <img width="1913" height="980" alt="Screenshot 2025-09-26 051811" src="https://github.com/user-attachments/assets/96621d0d-b59a-490b-ac5c-90891d510c93" />
 
-# SIMULATION
+# SYNTHESIS
+🛠️ Yosys Commands
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog dff_async_set.v
+synth -top dff_async_set
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
+<img width="966" height="173" alt="Screenshot 2025-09-26 060950" src="https://github.com/user-attachments/assets/fbd48555-3189-4b49-98d6-4a270d95242a" />
+
 
 
 
@@ -460,7 +486,19 @@ gtkwave tb_dff_syncres.vcd
 <img width="1907" height="989" alt="Screenshot 2025-09-26 052437" src="https://github.com/user-attachments/assets/e824b33a-95f9-419e-bb2a-c8b8162f3d2a" />
 
 
+# SYNTHESIS
+🛠️ Yosys Commands
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog dff_syncres.v
+synth -top dff_syncres
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+```
 
+<img width="961" height="179" alt="Screenshot 2025-09-26 061141" src="https://github.com/user-attachments/assets/3c0cb3d5-af21-4262-8769-a3cc1d52e3c0" />
 
 
 
