@@ -24,8 +24,8 @@
    -Retiming
    
    -Sequential Logic
-
-   - Cloning
+   
+   -Cloning
 
 
 ## 2️⃣ **Implementation of Combinational Optimization**
