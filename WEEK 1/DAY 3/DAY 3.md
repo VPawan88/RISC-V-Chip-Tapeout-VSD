@@ -295,6 +295,71 @@ show
 <img width="1094" height="174" alt="Screenshot 2025-09-26 184448" src="https://github.com/user-attachments/assets/9fa1888e-c766-427c-a7be-f268e2bd94cd" />
 
 
+## 4️⃣ **Unused Output Optimization**
+
+## 1. "counter_opt.v"
+
+```verilog
+```verilog
+module counter_opt (input clk , input reset , output q);
+reg [2:0] count;
+assign q = count[0];
+
+always @(posedge clk ,posedge reset)
+begin
+	if(reset)
+		count <= 3'b000;
+	else
+		count <= count + 1;
+end
+
+endmodule
+```
+
+🛠️ Yosys Commands
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog counter_opt.v
+synth -top counter_opt
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show 
+```
+<img width="1117" height="146" alt="Screenshot 2025-09-27 041032" src="https://github.com/user-attachments/assets/906f9154-03de-4423-b310-fc3761ef8698" />
+
+
+## 2. "counter_opt2.v"
+
+```verilog
+module counter_opt2 (input clk , input reset , output q);
+reg [2:0] count;
+assign q = (count[2:0]==3'b100);
+
+always @(posedge clk ,posedge reset)
+begin
+	if(reset)
+		count <= 3'b000;
+	else
+		count <= count + 1;
+end
+
+endmodule
+```
+
+🛠️ Yosys Commands
+```
+yosys
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+read_verilog counter_opt2.v
+synth -top counter_opt2
+dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show 
+```
+<img width="1154" height="292" alt="Screenshot 2025-09-27 041922" src="https://github.com/user-attachments/assets/c8880685-9aa3-4e26-a133-58ad08c7b147" />
+
+
 
 
 
