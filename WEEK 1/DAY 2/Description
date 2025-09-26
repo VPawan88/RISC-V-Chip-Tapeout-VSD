@@ -1,29 +1,54 @@
-Day 2 – Timing Libraries, Synthesis Styles & Flop Coding
+Digital Design Synthesis Lab - Week 1 Day 2
 
-focused on understanding timing libraries, synthesis approaches, and efficient flip-flop (flop) coding styles.
+Overview
+This repository contains hands-on experiments exploring digital design synthesis concepts using Yosys and the SkyWater 130nm technology library. The lab covers timing libraries, synthesis methodologies, flip-flop implementations, and optimization techniques.
 
-Key Topics Learned
+Key Experiments
 
-Timing Libraries (.lib)
-• Introduced the role of Liberty (.lib) files in synthesis.
-• These contain detailed timing, power, and functional models for each standard cell, enabling accurate timing analysis.
-• Example: sky130_fd_sc_hd__tt_025C_1v80.lib describes cell functions, propagation delays, setup/hold times, and power data for the SkyWater 130 nm process at typical corner (tt), 25 °C, and 1.8 V.
+1️⃣ Timing Libraries (.lib)
+- File: `sky130_fd_sc_hd__tt_025C_1v80.lib`
+- Description: Explored the structure and significance of timing libraries in digital design flows
+- Key Learnings:
+  - PVT corners (Process, Voltage, Temperature)
+  - Non-Linear Delay Models (NLDM)
+  - Power characterization (dynamic and leakage)
+  - Standard cell library organization
 
-Hierarchical vs Flat Synthesis
-• Hierarchical synthesis preserves module boundaries, making debugging and reuse easier and enabling faster incremental builds.
-• Flat synthesis flattens all modules into one netlist, allowing global optimization but increasing compile time and complexity.
-• Trade-off: Hierarchical is better for large reusable IPs, while flat is suited for maximum optimization in smaller designs.
+2️⃣ Hierarchical vs Flat Synthesis
+- Files: `multiple_modules.v`, `multiple_modules_heir.v`, `multiple_modules_flat.v`
+- Comparison:
+  - Hierarchical: Preserves module boundaries, maintains design structure
+  - Flat: Removes hierarchies, enables global optimization
+- Tools: Yosys with Sky130 standard cell library
 
-Efficient Flop Coding Styles and Optimization
-• Learned why flops are essential for sequential logic and timing closure.
-• Explored Verilog coding styles such as:
-– Asynchronous reset
-– Synchronous reset
-• Practiced writing and synthesizing these styles using Yosys with the Sky130 PDK.
+3️⃣ Glitch Analysis & Prevention
+- Concept: Studied glitches in combinational circuits caused by unequal path delays
+- Solution: Implemented flip-flops for glitch filtering using synchronous design practices
 
-Practical Labs
-• Wrote Verilog flop RTL and corresponding testbenches.
-• Simulated with Icarus Verilog and viewed waveforms using GTKWave.
-• Ran synthesis in Yosys with the sky130_fd_sc_hd__tt_025C_1v80.lib timing library.
-• Compared hierarchical versus flat synthesis netlists and timing.
+4️⃣ Flip-Flop Synthesis & Simulation
+Implemented and synthesized three types of D-flip-flops:
+- Async Reset: `dff_asyncres.v` - Reset independent of clock
+- Async Set: `dff_async_set.v` - Set independent of clock  
+- *ync Reset: `dff_syncres.v` - Reset synchronized with clock
+- Tools: Icarus Verilog for simulation, Yosys for synthesis
 
+5️⃣ Interesting Optimizations
+- Multiplication by 2: Optimized to simple bit-shift operation
+- Multiplication by 9: Yosys cleverly implemented as concatenation `{a, a}`
+- Demonstration: Showed how synthesis tools optimize arithmetic operations efficiently
+
+## Technical Stack
+- Synthesis Tool: Yosys
+- Simulation: Icarus Verilog + GTKWave
+- Technology: SkyWater 130nm PDK
+- Standard Cells: `sky130_fd_sc_hd__tt_025C_1v80.lib`
+
+## Skills Developed
+- Liberty file analysis and understanding
+- Yosys synthesis flow mastery
+- Hierarchical vs flat synthesis trade-offs
+- Flip-flop implementation and optimization
+- Glitch analysis and prevention techniques
+- Arithmetic optimization understanding
+
+This lab provides practical experience with industry-standard EDA tools and digital design methodologies essential for ASIC and FPGA development.
