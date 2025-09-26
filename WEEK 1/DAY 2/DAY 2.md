@@ -69,7 +69,7 @@ This task explores **Hierarchical** and **Flat** synthesis using Yosys with the 
 
 ---
 
-## 1️ Hierarchical Synthesis
+## 1️. Hierarchical Synthesis
 
 In hierarchical synthesis, submodules are preserved in the final gate-level netlist.
 
@@ -168,7 +168,7 @@ endmodule
 
 
 
-## 2 Flat Synthesis
+## 2. Flat Synthesis
 
 Flattening removes module boundaries so the tool directly optimizes all logic at the top level.
 
@@ -274,7 +274,7 @@ Follow **synchronous design practices**:
 
 ## 4️⃣ Simulation and Synthesis of Flip Flops 
 
-## 1 "D-Flip FLop with Asyncronous reset"
+## 1. "D-Flip FLop with Asyncronous reset"
 
 ## SIMULATION
 ## 'dff_asyncres.v'
@@ -350,7 +350,7 @@ show
 
 
 
-## 2 "D-Flip FLop with Asyncronous set"
+## 2. "D-Flip FLop with Asyncronous set"
 
 ## SIMULATION
 ## 'dff_async_set.v'
@@ -427,7 +427,7 @@ show
 
 
 
-## 3 "D-Flip FLop with Syncronous set"
+## 3. "D-Flip FLop with Syncronous set"
 
 ## SIMULATION
 ## 'dff_syncres.v'
@@ -503,7 +503,7 @@ show
 
 ## 5️⃣ Interesting Optimization
 
-## 1 "y=a*2"
+## 1. "y=a*2"
 
 ## 'mult_2.v'
 ```verilog
@@ -538,7 +538,7 @@ module mul2(a, y);
   assign y = { a, 1'h0 };
 endmodule
 ```
-## 1 "y=a*2"
+## 2. "y=a*2"
 
 ## 'mult_8.v'
 ```verilog
