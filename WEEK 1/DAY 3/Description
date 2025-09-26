@@ -1,1 +1,95 @@
-ad
+Week 1 Day 3
+
+Overview
+This lab explores combinational and sequential optimization techniques using Yosys synthesis tools with the SkyWater 130nm technology library. The experiments demonstrate how synthesis tools optimize digital circuits for area and power efficiency.
+
+ Key Experiments
+
+  1️⃣ Introduction to Optimization Techniques
+- Combinational Optimization: Constant propagation, Boolean logic optimization, K-map simplification
+- Sequential Optimization: Sequential constant propagation, state optimization, retiming
+
+  2️⃣ Combinational Logic Optimization
+
+#### 1. opt_check.v - Ternary Operator Optimization
+```verilog
+assign y = a ? b : 0;
+```
+- Optimization: Simplified to AND gate (`y = a & b`)
+- Result: Removed unnecessary multiplexer logic
+
+#### 2. opt_check2.v - Constant Propagation
+```verilog
+assign y = a ? 1 : b;
+```
+- Optimization: Reduced to OR gate (`y = a | b`)
+- Result: Eliminated constant value handling
+
+#### 3. opt_check3.v - Nested Ternary Optimization
+```verilog
+assign y = a ? (c ? b : 0) : 0;
+```
+- Optimization: Simplified to `y = a & c & b`
+- Result: Cascaded ternary operations merged into single AND gate
+
+### 3️⃣ Sequential Logic Optimization
+
+#### 1. dff_const1.v - Reset Dominant Flip-Flop
+```verilog
+if(reset) q <= 1'b0; else q <= 1'b1;
+```
+- Behavior: Reset=1 → q=0, Reset=0 → q=1 (constant output when not reset)
+- Optimization: Synthesized to simple flip-flop with constant input
+
+#### 2. dff_const2.v - Constant Output Flip-Flop
+```verilog
+if(reset) q <= 1'b1; else q <= 1'b1;
+```
+- Behavior: Output always 1 regardless of reset
+- Optimization: Complete circuit elimination, replaced with constant value
+
+#### 3. dff_const3.v - Sequential Constant Propagation
+```verilog
+// Two flip-flops in sequence
+q1 <= 1'b1; q <= q1;
+```
+- Behavior: Creates a constant propagation chain
+- Optimization: Both flip-flops optimized away, direct constant connection
+
+### 4️⃣ Unused Output Optimization
+
+#### 1. counter_opt.v - Partial Output Usage
+```verilog
+reg [2:0] count; assign q = count[0];
+```
+- Optimization: Only LSB of counter used, upper bits optimized away
+- Result: Single flip-flop instead of 3-bit counter
+
+#### 2. counter_opt2.v - Comparator Optimization
+```verilog
+assign q = (count[2:0] == 3'b100);
+```
+- Optimization: 3-bit counter with equality check
+- Result: Efficient implementation detecting specific count value
+
+## Technical Insights
+
+### Optimization Strategies Demonstrated:
+- Constant Propagation: Eliminating logic with constant inputs/outputs
+- Dead Code Elimination: Removing unused circuitry
+- Boolean Simplification: Reducing complex expressions to minimal gates
+- Resource Sharing: Optimizing multi-bit operations
+
+### Tools Used:
+- Synthesis: Yosys with Sky130 standard cell library
+- Simulation: Icarus Verilog + GTKWave
+- Analysis: Waveform verification and schematic inspection
+
+## Key Learnings
+1. Synthesis tools automatically apply advanced optimization techniques
+2. Proper coding styles enable better optimization opportunities
+3. Sequential optimizations can significantly reduce circuit complexity
+4. Unused outputs trigger aggressive area optimization
+5. Constant propagation is powerful for both combinational and sequential logic
+
+This lab demonstrates practical optimization techniques that are crucial for efficient digital ASIC/FPGA design, highlighting the importance of understanding how synthesis tools interpret and optimize HDL code.
