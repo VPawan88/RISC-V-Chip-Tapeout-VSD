@@ -242,6 +242,229 @@ show
 
 
 
+## 3️⃣ Glitch in Combinational Circuits & How to Overcome It
+
+##  What is a Glitch?
+A **glitch** is a short, unwanted pulse that appears at the output of a combinational logic circuit.  
+It occurs because of **unequal propagation delays** along different logic paths when inputs change.
+
+### Key Points
+- Happens during input transitions.
+- Can lead to **false triggering** of other circuits.
+- Increases **dynamic power consumption** due to unnecessary switching.
+
+---
+
+##  Overcoming Glitches with Flip-Flops
+
+###  Solution
+Place a **flip-flop (FF)** at the output of the combinational circuit.
+
+- The FF samples the output **only on the clock edge**.
+- Any short spikes or hazards between clock edges are **ignored**.
+- Only the **stable, final value** is passed to the next stage.
+
+---
+
+##  Design Tip
+Follow **synchronous design practices**:
+- Register all outputs with clocked flip-flops.
+- This filters glitches and ensures **reliable, noise-free operation**.
+
+
+## 4️⃣ Simulation and Synthesis of Flip Flops 
+
+## 1 "D-Flip FLop with Asyncronous reset"
+
+# SIMULATION
+# 'dff_asyncres.v'
+```verilog
+module dff_asyncres ( input clk ,  input async_reset , input d , output reg q );
+always @ (posedge clk , posedge async_reset)
+begin
+	if(async_reset)
+		q <= 1'b0;
+	else	
+		q <= d;
+end
+endmodule
+```
+
+# 'tb_dff_asyncres.v'
+```verilog
+
+`timescale 1ns / 1ps
+module tb_dff_asyncres;
+	// Inputs
+	reg clk, async_reset,   d;
+	// Outputs
+	wire q;
+
+        // Instantiate the Unit Under Test (UUT)
+	dff_asyncres uut (
+		.clk(clk),
+		.async_reset(async_reset),
+		.d(d),
+		.q(q)
+	);
+
+	initial begin
+	$dumpfile("tb_dff_asyncres.vcd");
+	$dumpvars(0,tb_dff_asyncres);
+	// Initialize Inputs
+	clk = 0;
+	async_reset = 1;
+	d = 0;
+	#3000 $finish;
+	end
+
+always #10 clk = ~clk;
+always #23 d = ~d;
+always #547 async_reset=~async_reset;
+endmodule
+```
+
+🛠️ Yosys Commands
+```
+iverilog dff_asyncres.v tb_dff_asyncres.v
+./a.out
+gtkwave tb_dff_asyncres.vcd
+```
+<img width="1919" height="1013" alt="Screenshot 2025-09-26 051523" src="https://github.com/user-attachments/assets/a898938b-ba7e-4bd5-b743-e41b94c6c6f7" />
+
+# SYNTHESIS
+
+
+
+## 2 "D-Flip FLop with Asyncronous set"
+
+# SIMULATION
+# 'dff_async_set.v'
+```verilog
+module dff_async_set ( input clk ,  input async_set , input d , output reg q );
+always @ (posedge clk , posedge async_set)
+begin
+	if(async_set)
+		q <= 1'b1;
+	else	
+		q <= d;
+end
+endmodule
+```
+
+# 'tb_dff_async_set.v'
+```verilog
+
+
+`timescale 1ns / 1ps
+module tb_dff_async_set;
+	// Inputs
+	reg clk, async_set,   d;
+	// Outputs
+	wire q;
+
+        // Instantiate the Unit Under Test (UUT)
+	dff_async_set uut (
+		.clk(clk),
+		.async_set(async_set),
+		.d(d),
+		.q(q)
+	);
+
+	initial begin
+	$dumpfile("tb_dff_async_set.vcd");
+	$dumpvars(0,tb_dff_async_set);
+	// Initialize Inputs
+	clk = 0;
+	async_set = 1;
+	d = 0;
+	#3000 $finish;
+	end
+
+always #10 clk = ~clk;
+always #23 d = ~d;
+always #547 async_set=~async_set;
+endmodule
+```
+
+🛠️ Yosys Commands
+```
+iverilog dff_async_set.v tb_dff_async_set.v
+./a.out
+gtkwave tb_dff_async_set.vcd
+```
+
+<img width="1913" height="980" alt="Screenshot 2025-09-26 051811" src="https://github.com/user-attachments/assets/96621d0d-b59a-490b-ac5c-90891d510c93" />
+
+# SIMULATION
+
+
+
+
+## 3 "D-Flip FLop with Syncronous set"
+
+# SIMULATION
+# 'dff_syncres.v'
+```verilog
+module dff_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
+always @ (posedge clk )
+begin
+	if (sync_reset)
+		q <= 1'b0;
+	else	
+		q <= d;
+end
+endmodule
+```
+
+# 'tb_dff_syncres.v'
+```verilog
+`timescale 1ns / 1ps
+module tb_dff_syncres;
+	// Inputs
+	reg clk,  sync_reset,  d;
+	// Outputs
+	wire q;
+
+        // Instantiate the Unit Under Test (UUT)
+	dff_syncres uut (
+		.clk(clk),
+		.sync_reset(sync_reset),
+		.d(d),
+		.q(q)
+	);
+
+	initial begin
+	$dumpfile("tb_dff_syncres.vcd");
+	$dumpvars(0,tb_dff_syncres);
+	// Initialize Inputs
+	clk = 0;
+	sync_reset = 0;
+	d = 0;
+	#3000 $finish;
+	end
+
+always #10 clk = ~clk;
+always #23 d = ~d;
+always #113 sync_reset = ~sync_reset;
+endmodule
+```
+
+🛠️ Yosys Commands
+```
+iverilog dff_syncres.v tb_dff_syncres.v
+./a.out
+gtkwave tb_dff_syncres.vcd
+```
+
+<img width="1907" height="989" alt="Screenshot 2025-09-26 052437" src="https://github.com/user-attachments/assets/e824b33a-95f9-419e-bb2a-c8b8162f3d2a" />
+
+
+
+
+
+
+
 
 
 
