@@ -291,7 +291,8 @@ synth -top dff_const3
 dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show 
-```<img width="1094" height="174" alt="Screenshot 2025-09-26 184448" src="https://github.com/user-attachments/assets/9fa1888e-c766-427c-a7be-f268e2bd94cd" />
+```
+<img width="1094" height="174" alt="Screenshot 2025-09-26 184448" src="https://github.com/user-attachments/assets/9fa1888e-c766-427c-a7be-f268e2bd94cd" />
 
 
 
