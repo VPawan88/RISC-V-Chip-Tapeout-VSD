@@ -1,1 +1,32 @@
-ad
+
+Day 5 – Optimization in Synthesis
+
+📘 Introduction to Optimizations
+
+Learned how IF-CASE constructs, loops, and generate statements affect RTL synthesis.
+
+Understood how synthesis tools optimize logic for area, timing, and resource utilization.
+
+⚡ IF-CASE Constructs Optimizations
+
+Simplified conditional logic using IF and CASE statements.
+
+Explored incomplete IF/CASE scenarios to see how synthesis handles unassigned branches.
+
+Observed automatic insertion of default logic for overlapping or missing conditions.
+
+⏱️ Sequential Logic Optimizations
+
+Studied how loops (for) and generate statements can reduce repetitive code.
+
+Learned how synthesis unrolls loops efficiently to optimize combinational and sequential paths.
+
+Explored lab examples of incomplete loops and overlapping CASE statements to understand tool warnings and optimizations.
+
+🧹 Code Efficiency and Resource Reduction
+
+Removed redundant logic using conditional simplifications.
+
+Observed synthesis handling of dead code and constant propagation in sequential circuits.
+
+Learned techniques to write compact, maintainable RTL that meets area and timing constraints.
