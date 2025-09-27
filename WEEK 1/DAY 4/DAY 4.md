@@ -96,12 +96,6 @@ gtkwave tb_ternary_operator_mux.vcd
 <img width="1849" height="647" alt="Screenshot 2025-09-27 052434" src="https://github.com/user-attachments/assets/c2086df7-e2ef-4d63-8f0a-6665a8fc7616" />
 
 
-## 2. "bad_mux.v"
-```verilog
 
-```
-
-## "tb_ternary_operator_mux.v"
-```verilog
 
 
