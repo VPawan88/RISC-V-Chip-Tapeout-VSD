@@ -1,1 +1,29 @@
-ad
+
+Day 4 – GLS, Blocking vs Non-blocking, and Synthesis-Simulation Mismatch
+
+📘 Introduction
+
+Understood the concept of Gate Level Simulation (GLS) and how it differs from RTL simulation.
+
+Learned about synthesis-simulation mismatch and its impact on design verification.
+
+Explored differences between blocking (=) and non-blocking (<=) assignments in Verilog.
+
+⚡ Key Learnings
+
+GLS Concepts and Flow – Performed GLS using Icarus Verilog and compared with RTL sim.
+
+Synthesis-Simulation Mismatch – Observed mismatches due to uninitialized signals and delays.
+
+Blocking vs Non-blocking – Learned when to use each and pitfalls of mixing them.
+
+Caveats with Blocking Statements – Understood race conditions and incorrect ordering issues.
+
+🧪 Lab Experiments
+
+GLS and Synth-Sim Mismatch (Part 1 & 2) – Ran testbenches on RTL and synthesized netlist to observe mismatches.
+
+Blocking Statement Mismatch (Part 1 & 2) – Demonstrated how blocking assignments can cause incorrect simulation results compared to synthesis.
+
+✨ Experiment Log (one-liner)
+During this lab, we performed Gate Level Simulation (GLS) and studied synthesis-simulation mismatches, focusing on blocking vs non-blocking assignments.
